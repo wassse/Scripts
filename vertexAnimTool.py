@@ -24,24 +24,6 @@ def UI():
     cmds.rowColumnLayout( numberOfColumns=2, columnAttach=(1, 'right', 0), columnWidth=[(1, 100), (2,30)])
     cmds.text( label='Step Size' )
     inputField = cmds.textField("inputField", width = 30, text = gStepSize)
-    
-    #HELP MENU AND ABOUT
-    helpMenu = cmds.menu("helpMenu", helpMenu = True, l = "Help", parent = "vertexAnimToolUI")
-    menuItem = cmds.menuItem(l = "Help", c=r"cmds.confirmDialog(messageAlign='left', title='Help" + r"', button = 'Accept', defaultButton='Accept',message='\
-    \n Animation Timeline \
-    \n 1. Set the range slider to start and finish of the animation.  \
-    \n 3. Select one or more meshes animated on the timeline, with or without skeleton. \
-    \n 4. Click the Timeline button and wait. Open log to watch progress if you want. \
-    \n 5. Import mesh to UE4 \
-    \n \
-    \n Frame by Frame \
-    \n 2. Select meshes in the order that you want them to appear in the animation \
-    \n 3. Click Multiple Objects Button \
-    \n 4. Import mesh to UE4 \
-    \n \
-    \n IMPORTANT: Change texturecoordinate index depending on what UVset you have the animation data in. \
-    \n Check script editor log for script computing progress')")
-
 
     cmds.showWindow(window)
 
@@ -80,9 +62,7 @@ def main(selection, *args):
         cmds.separator(height = 10, style = "none")
         cmds.separator(height = 10, style = "none")
         cmds.progressBar(progressControl, edit=True, step=1)
-        
-        
-        
+         
         copyUVSet(item)
         modifyUVs(item,id)
         print str(id+1) + "/" + str(len(selection)) + " PROCESSED"
